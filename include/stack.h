@@ -8,13 +8,13 @@ typedef struct node
 {
     int data;
     struct node* next;
-} node_t;
+} node;
 
-void initialize(node_t**);
-void push(int, node_t**);
-int pop(node_t**);
-bool full(node_t** ptr);
-bool empty(node_t**);
+void initialize(node**);
+void push(int, node**);
+int pop(node**);
+bool full(node** ptr);
+bool empty(node**);
 
 
 #endif // __STACK_H_
