@@ -1,24 +1,25 @@
 #include "stack.h"
-void initialize(node** ptr)
+
+void initialize(stack* s){
+  //implement initialize here
+}
+
+void push(int x, stack* s){
+    //implement push here
+}
+
+int pop(stack* s){
+    // implement pop here
+  return -1;
+}
+
+bool empty(stack* s)
 {
-    // Add your code here
+  //implement empty here
+  return false;
 }
 
-void push(int x, node** ptr){
-    // Add your code here
-}
-
-int pop(node** ptr){
-    // Add your code here
-    return -1;
-}
-
-bool full(node** ptr){
-    // Add your code here
-    return -1;
-}
-
-bool empty(node** ptr){
-    // Add your code here   
-    return -1;
+bool full(stack* s) {
+    //implement full here
+  return false;
 }
