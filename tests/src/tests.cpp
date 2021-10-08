@@ -3,37 +3,50 @@
 
 extern "C"
 {
-#include "max.h"
-#include "swap.h"
-#include "max_sum.h"
+#include "stack.h"
+#include "taylor_sine.h"
 }
 
 // See Catch2's documentation: https://github.com/catchorg/Catch2/blob/devel/docs/tutorial.md#scaling-up
 
-TEST_CASE("max")
+TEST_CASE("taylor_sine")
 {
-    REQUIRE(max(0, 0) == 0);
-    REQUIRE(max(1, 2) == 2);
-    REQUIRE(max(0, -1) == -1);
-    REQUIRE(max(-2, -1) == -1);
+    // Jens 
 }
 
-TEST_CASE("swap")
-{
-    int a = 1;
-    int b = 2;
-    swap(&a, &b);
-    REQUIRE(a == 2);
-    REQUIRE(b == 1);
-    swap(&a, &b);
-    REQUIRE(a == 1);
-    REQUIRE(b == 2);
-}
+TEST_CASE("stack"){
+    node_t** stackPtr = (node_t**)malloc(sizeof(node_t*));
+    initialize(stackPtr);
+    REQUIRE(*stackPtr == NULL);
+    REQUIRE(empty(stackPtr));
 
-TEST_CASE("max_sum")
-{
-    REQUIRE(max_sum(1, 2, 3) == 6);
-    REQUIRE(max_sum(1, 2, -3) == 3);
-    REQUIRE(max_sum(0, 0, 0) == 0);
-    REQUIRE(max_sum(-10, 20, 30) == 50);
+    //B
+    node_t** ptrB = (node_t**)malloc(sizeof(node_t*));
+    initialize(ptrB);
+    node_t* ptrBBak = *ptrB;
+    int x = 5;
+    push(x, ptrB);
+    REQUIRE(ptrBBak!=*ptrB);
+    int y = pop(ptrB);
+    REQUIRE(ptrBBak==*ptrB);
+    REQUIRE(y==x);
+
+    //C
+    node_t** ptrC = (node_t**)malloc(sizeof(node_t*));
+    initialize(ptrC);
+    node_t* ptrCBak = *ptrC;
+    int x0 = 1;
+    int x1 = 2;
+    push(x0, ptrC);
+    REQUIRE(ptrCBak!=*ptrC);
+    push(x1, ptrC);
+    REQUIRE(ptrCBak!=*ptrC);
+    int y0 = pop(ptrC);
+    REQUIRE(ptrCBak!=*ptrC);
+
+    int y1 = pop(ptrC);
+    REQUIRE(x1==y0);
+    REQUIRE(x0==y1);
+    REQUIRE(*ptrC == ptrCBak);
+
 }
