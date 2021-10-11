@@ -15,38 +15,31 @@ TEST_CASE("taylor_sine")
 }
 
 TEST_CASE("stack"){
-    node_t** stackPtr = (node_t**)malloc(sizeof(node_t*));
-    initialize(stackPtr);
-    REQUIRE(*stackPtr == NULL);
-    REQUIRE(empty(stackPtr));
+    stack s;
+    initialize(&s);
+    REQUIRE(s.head == NULL);
 
-    //B
-    node_t** ptrB = (node_t**)malloc(sizeof(node_t*));
-    initialize(ptrB);
-    node_t* ptrBBak = *ptrB;
+    stack sb0;
+    initialize(&sb0);
+    stack sb1 = sb0;
     int x = 5;
-    push(x, ptrB);
-    REQUIRE(ptrBBak!=*ptrB);
-    int y = pop(ptrB);
-    REQUIRE(ptrBBak==*ptrB);
-    REQUIRE(y==x);
+    push(x, &sb0);
+    REQUIRE(sb1.head != sb0.head);
+    int y = pop(&sb0);
+    REQUIRE(x == y);
+    REQUIRE(sb1.head == sb0.head);
 
-    //C
-    node_t** ptrC = (node_t**)malloc(sizeof(node_t*));
-    initialize(ptrC);
-    node_t* ptrCBak = *ptrC;
+    stack sc0;
+    initialize(&sc0);
+    stack sc1 = sc0;
     int x0 = 1;
     int x1 = 2;
-    push(x0, ptrC);
-    REQUIRE(ptrCBak!=*ptrC);
-    push(x1, ptrC);
-    REQUIRE(ptrCBak!=*ptrC);
-    int y0 = pop(ptrC);
-    REQUIRE(ptrCBak!=*ptrC);
-
-    int y1 = pop(ptrC);
-    REQUIRE(x1==y0);
-    REQUIRE(x0==y1);
-    REQUIRE(*ptrC == ptrCBak);
+    push(x0, &sc0);
+    push(x1, &sc0);
+    int y0 = pop(&sc0);
+    int y1 = pop(&sc0);
+    REQUIRE(x1 == y0);
+    REQUIRE(x0 == y1);
+    REQUIRE(sc0.head == sc1.head);
 
 }
