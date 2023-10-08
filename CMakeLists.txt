@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(assignment-6 VERSION 0.1.0 LANGUAGES CXX C)
+project(assignment-7 VERSION 0.1.0 LANGUAGES CXX C)
 
 set(CMAKE_CXX_STANDARD 20) # Needed to use designated initializers in ./tests/tests.cpp
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -32,6 +32,6 @@ endforeach()
 
 add_executable(unit-tests tests/tests.cpp)
 target_include_directories(unit-tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(unit-tests $${libs})
+target_link_libraries(unit-tests ${libs})
 target_link_libraries(unit-tests Catch2::Catch2WithMain)
 # target_compile_definitions(unit-tests PRIVATE -DTEST)
